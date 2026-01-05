@@ -1,5 +1,16 @@
 #include <stdio.h>
+#include <string.h>
 
-int main() {
-    return 0;
-}
+enum {
+    HALT,
+    PUSH,
+    POP,
+    ADD,
+    SUB,
+    MUL,
+    DIV,
+    LOAD,
+    STORE,
+    JMP,
+    JZ
+};
