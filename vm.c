@@ -8,7 +8,11 @@ enum {
     ADD,
     SUB,
     MUL,
-    DIV
+    DIV,
+    LOAD,
+    STORE,
+    JMP,
+    JZ
 };
 
 void run_vm(VM *vm) {
@@ -42,6 +46,25 @@ void run_vm(VM *vm) {
             case DIV:
                 vm->stack[vm->sp - 1] /= vm->stack[vm->sp];
                 vm->sp--;
+                break;
+
+            case LOAD:
+                vm->stack[++vm->sp] = vm->memory[vm->code[vm->pc++]];
+                break;
+
+            case STORE:
+                vm->memory[vm->code[vm->pc++]] = vm->stack[vm->sp--];
+                break;
+
+            case JMP:
+                vm->pc = vm->code[vm->pc];
+                break;
+
+            case JZ:
+                if (vm->stack[vm->sp--] == 0)
+                    vm->pc = vm->code[vm->pc];
+                else
+                    vm->pc++;
                 break;
 
             case HALT:
