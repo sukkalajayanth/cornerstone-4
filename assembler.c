@@ -14,3 +14,11 @@ enum {
     JMP,
     JZ
 };
+
+typedef struct {
+    char name[32];
+    int address;
+} Label;
+
+Label labels[50];
+int label_count = 0;
