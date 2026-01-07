@@ -22,3 +22,13 @@ typedef struct {
 
 Label labels[50];
 int label_count = 0;
+
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        printf("Usage: assembler <file.asm>\n");
+        return 1;
+    }
+
+    printf("Assembling %s\n", argv[1]);
+    return 0;
+}
