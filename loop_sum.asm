@@ -1,0 +1,4 @@
+PUSH 0
+PUSH 5
+ADD
+HALT
