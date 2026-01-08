@@ -1,19 +1,15 @@
 #include "vm.h"
 #include <stdio.h>
 
-enum {
-    HALT,
-    PUSH,
-    POP,
-    ADD,
-    SUB,
-    MUL,
-    DIV,
-    LOAD,
-    STORE,
-    JMP,
-    JZ
-};
+void init_vm(VM *vm, int *code, int size) {
+    vm->sp = -1;
+    vm->pc = 0;
+    vm->code = code;
+    vm->code_size = size;
+
+    for (int i = 0; i < MEM_SIZE; i++)
+        vm->memory[i] = 0;
+}
 
 void run_vm(VM *vm) {
     while (vm->pc < vm->code_size) {
