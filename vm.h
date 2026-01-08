@@ -4,6 +4,21 @@
 #define STACK_SIZE 256
 #define MEM_SIZE 1024
 
+// Opcode definitions (shared)
+enum {
+    HALT,
+    PUSH,
+    POP,
+    ADD,
+    SUB,
+    MUL,
+    DIV,
+    LOAD,
+    STORE,
+    JMP,
+    JZ
+};
+
 typedef struct {
     int stack[STACK_SIZE];
     int sp;
